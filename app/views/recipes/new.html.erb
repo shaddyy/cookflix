@@ -1,6 +1,6 @@
 <%= render :partial => 'layouts/topnav'%>
-
-<h1>New Recipes</h1>
+<center>
+<h2>Submit a Recipe!</h2>
 
 <%= form_for :recipe, url: recipes_path do |f| %>
 <!--Error Checking-->
@@ -11,7 +11,7 @@
         <%= pluralize(@recipe.errors.count, "error") %> prohibited
         this recipe from being saved:
       </h2>
-      <ul>
+      <ul style="list-style-type:none">
         <% @recipe.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
@@ -22,8 +22,8 @@
 
 
 
-
-<div> 
+<form>
+<div class="jumbotron"> 
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -91,3 +91,5 @@
   </p>
 <% end %>
 </div>
+</form>
+</center>

@@ -1,8 +1,8 @@
 <%= render :partial => 'layouts/topnav'%>
 
-
+<div class = "container">
 <h1><%=@recipe.title%></h1>
-
+<div class="jumbotron">
 <p>
   <strong>Title:</strong>
   <%= @recipe.title %>
@@ -58,6 +58,7 @@
   	<%= @recipe.protein %>
 </p>
 <%end%>
+</div>
 
 <!--Comments Section -->
 <h2>Comments</h2>
@@ -88,3 +89,5 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+</div>
