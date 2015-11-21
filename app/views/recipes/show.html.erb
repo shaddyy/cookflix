@@ -1,7 +1,90 @@
-<h1>Newly created recipe</h1>
+<%= render :partial => 'layouts/topnav'%>
+
+
+<h1><%=@recipe.title%></h1>
 
 <p>
   <strong>Title:</strong>
   <%= @recipe.title %>
 </p>
+
+<p>
+	<strong>Category:</strong>
+	<%= @recipe.category %>
+</p>
+
+<p>
+	<strong>Preptime:</strong>
+  	<%= @recipe.preptime %>
+</p>
+
+<p>
+	<strong>Ingredients:</strong>
+  	<%= @recipe.ingredients %>
+</p>
+
+<p>
+	<strong>Directions:</strong>
+  	<%= @recipe.directions %>
+</p>
  
+<!--Checking For Nutritional Information-->
+
+<% if @recipe.calories != '' %>
+ <p>
+	<strong>Calories:</strong>
+  	<%= @recipe.calories %>
+</p>
+<%end%>
+
+
+<% if @recipe.fats != '' %>
+<p>
+	<strong>Fats:</strong>
+  	<%= @recipe.fats %>
+</p>
+<%end%>
+
+<% if @recipe.carbs != '' %>
+<p>
+	<strong>Carbs:</strong>
+  	<%= @recipe.carbs %>
+</p>
+<%end%>
+
+<% if @recipe.protein != '' %>
+<p>
+	<strong>Protein:</strong>
+  	<%= @recipe.protein %>
+</p>
+<%end%>
+
+<!--Comments Section -->
+<h2>Comments</h2>
+<% @recipe.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<!--Adding a Comment-->
+<h2>Add a comment:</h2>
+<%= form_for([@recipe, @recipe.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

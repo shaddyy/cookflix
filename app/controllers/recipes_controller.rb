@@ -1,16 +1,24 @@
 class RecipesController < ApplicationController
+	def index
+	    @recipe = Recipe.all
+	  end
+
 	def show
 		@recipe = Recipe.find(params[:id])
 	end
 
 	def new
+		@recipe = Recipe.new
 	end
 
 	def create
-		@recipe = Recipe.new(params.require(:recipe).permit(:title, :category, :preptime, :ingredients, :directions, :calories, :fats, :carbs, :protein))
+		@recipe = Recipe.new(recipe_params)
  
-  		@recipe.save
-  		redirect_to @recipe
+  		if @recipe.save
+  			redirect_to @recipe
+  		else
+  			render 'new'
+  		end	
 	end
 
 	private

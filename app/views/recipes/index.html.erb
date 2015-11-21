@@ -1,0 +1,59 @@
+<%= render :partial => 'layouts/topnav'%>
+
+
+<h1>Listing Recipes</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Category</th>
+    <th>Preptime</th>
+  </tr>
+ 
+  <% @recipe.each do |recipe| %>
+  <% if(params[:view] == "breakfast")%>
+    <% if  (recipe.category == "breakfast") %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.preptime %></td>
+        <td><%= link_to 'Show', recipe_path(recipe) %></td>
+      </tr>
+      <%end%>
+  <%elsif (params[:view] == "lunch")%>
+    <% if recipe.category == "lunch" %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.preptime %></td>
+        <td><%= link_to 'Show', recipe_path(recipe) %></td>
+      </tr>
+    <%end%>
+  <%elsif (params[:view] == "dinner")%>
+    <% if recipe.category == "dinner" %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.preptime %></td>
+        <td><%= link_to 'Show', recipe_path(recipe) %></td>
+      </tr>
+    <%end%>  
+  <%elsif (params[:view] == "snack")%>
+    <% if recipe.category == "snack" %>
+    <tr>
+      <td><%= recipe.title %></td>
+      <td><%= recipe.category %></td>
+      <td><%= recipe.preptime %></td>
+      <td><%= link_to 'Show', recipe_path(recipe) %></td>
+    </tr>  
+    <%end%>
+  <%else%>
+    <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.preptime %></td>
+        <td><%= link_to 'Show', recipe_path(recipe) %></td>
+    </tr>
+  <%end%>
+  <% end %>
+</table>

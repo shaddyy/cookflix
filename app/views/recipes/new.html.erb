@@ -1,15 +1,54 @@
+<%= render :partial => 'layouts/topnav'%>
+
 <h1>New Recipes</h1>
 
 <%= form_for :recipe, url: recipes_path do |f| %>
+<!--Error Checking-->
+<div>
+<% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recipe.errors.count, "error") %> prohibited
+        this recipe from being saved:
+      </h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+<div> 
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
  
-  <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </p>
+ <p>Please select a category:</p>
+  <table>
+
+  	<td>
+   	<%= f.radio_button :category, 'breakfast' %>
+  	<%= label :category_breakfast, 'Breakfast' %>
+  	</td>
+  	<td>
+  	<%= f.radio_button :category, 'lunch' %>
+  	<%= label :category_lunch, 'Lunch' %>
+  	</td>
+  	<td>
+  	<%= f.radio_button :category, 'dinner' %>
+  	<%= label :category_dinner, 'Dinner' %>
+  	</td>
+  	<td>
+  	<%= f.radio_button :category, 'snack' %>
+  	<%= label :category_snack, 'Snack' %>
+  	</td>
+  </table>
 
   <p>
     <%= f.label :preptime %><br>
@@ -26,6 +65,7 @@
     <%= f.text_area :directions %>
   </p>
 
+  <p>Optional:</p>
   <p>
     <%= f.label :calories %><br>
     <%= f.text_field :calories %>
@@ -50,3 +90,4 @@
     <%= f.submit %>
   </p>
 <% end %>
+</div>
