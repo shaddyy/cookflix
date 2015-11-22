@@ -14,7 +14,18 @@ body{
     <th>Preptime</th>
     <th>Display</th>
   </tr>
- 
+<%if (params[:view] == "shaddyAdmin")%>
+  <% @recipe.each do |recipe| %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.preptime %></td>
+        <td><%= link_to 'Destroy', recipe_path(recipe),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <%end%>
+ <%else%>      
   <% @recipe.each do |recipe| %>
   <% if(params[:view] == "breakfast")%>
     <% if  (recipe.category == "breakfast") %>
@@ -61,5 +72,6 @@ body{
     </tr>
   <%end%>
   <% end %>
+  <%end%>
 </table>
 </div>

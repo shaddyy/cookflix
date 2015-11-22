@@ -1,5 +1,5 @@
 <%= render :partial => 'layouts/topnav'%>
-<center>
+
 <div class="container">
 <h2>Submit a Recipe!</h2>
 
@@ -8,11 +8,11 @@
 <div>
 <% if @recipe.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h3>
         <%= pluralize(@recipe.errors.count, "error") %> prohibited
         this recipe from being saved:
-      </h2>
-      <ul style="list-style-type:none">
+      </h3>
+      <ul >
         <% @recipe.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
@@ -27,11 +27,11 @@
 <div class="jumbotron"> 
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title , class: 'form-control', placeholder: "Enter Title"%>
   </p>
  
  <p>Please select a category:</p>
-  <table>
+  <table class ="table table-striped">
 
   	<td>
    	<%= f.radio_button :category, 'breakfast' %>
@@ -53,45 +53,42 @@
 
   <p>
     <%= f.label :preptime %><br>
-    <%= f.text_field :preptime %>
-  </p>
+    <%= f.text_field :preptime, class: 'form-control', placeholder: "Enter Preptime" %>  </p>
 
   <p>
     <%= f.label :ingredients %><br>
-    <%= f.text_area :ingredients %>
+    <%= f.text_area :ingredients, class: 'form-control', placeholder: "Enter Ingredients List" %>
   </p>
 
   <p>
     <%= f.label :directions %><br>
-    <%= f.text_area :directions %>
+   	<%= f.text_area :directions, class: 'form-control', placeholder: "Enter Directions" %>
   </p>
 
   <p>Optional:</p>
   <p>
     <%= f.label :calories %><br>
-    <%= f.text_field :calories %>
+    <%= f.text_field :calories, class: 'form-control', placeholder: "Calories" %>
   </p>
 
   <p>
     <%= f.label :fats %><br>
-    <%= f.text_field :fats %>
+    <%= f.text_field :fats, class: 'form-control', placeholder: "Enter Fats" %>
   </p>
 
   <p>
     <%= f.label :carbs %><br>
-    <%= f.text_field :carbs %>
+   	<%= f.text_field :carbs , class: 'form-control', placeholder: "Enter Carbs"%>
   </p>
 
   <p>
     <%= f.label :protein %><br>
-    <%= f.text_field :protein %>
-  </p>
+    <%= f.text_field :protein , class: 'form-control', placeholder: "Enter Protein"%>  </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit "Submit Recipe", class: "btn btn-default"%>
   </p>
 <% end %>
 </div>
 </form>
 </div>
-</center>
