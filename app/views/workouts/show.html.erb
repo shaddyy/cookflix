@@ -1,0 +1,19 @@
+<%= render :partial => 'layouts/topnav'%>
+
+<p>
+  <strong>Body Part:</strong>
+  <%= @workout.body %>
+</p>
+ 
+ <p>
+  <strong>Date:</strong>
+  <%= @workout.date %>
+</p>
+
+<p>
+  <strong>Log:</strong>
+  <%= simple_format(@workout.log) %>
+</p>
+
+ <p><%= link_to 'Edit', edit_workout_path(@workout) %></p>
+ <p><%= link_to 'Back', workouts_path %></p>

@@ -1,0 +1,42 @@
+<%= render :partial => 'layouts/topnav'%>
+
+<h1>Editing Workout</h1>
+
+<%= form_for :workout, url: workout_path(@workout), method: :patch do |f| %>
+
+<% if @workout.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@workout.errors.count, "error") %> prohibited
+        this workout from being saved:
+      </h2>
+      <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </p>
+
+  <p>
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </p>
+ 
+  <p>
+    <%= f.label :log %><br>
+    <%= f.text_area :log %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', workouts_path %>
