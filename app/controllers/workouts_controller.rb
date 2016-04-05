@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
 	http_basic_authenticate_with name: "shaddy", password: "sz636302", except: [:index, :show]
 
 	def index
-		@workouts = Workout.all
+		@workouts = Workout.all.order('created_at DESC')
 	end
 
 	def show
