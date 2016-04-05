@@ -9,7 +9,7 @@ ul
 <div class="container">
 <h1>Editing Workout</h1>
 
-<%= form_for :workout, url: workouts_path do |f| %>
+<%= form_for :workout, url: workout_path(@workout), method: :patch do |f| %>
 
 <% if @workout.errors.any? %>
     <div id="error_explanation">
