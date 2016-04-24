@@ -48,3 +48,4 @@ end
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'autoprefixer-rails'
 gem 'cowsay'
+gem 'paperclip'
